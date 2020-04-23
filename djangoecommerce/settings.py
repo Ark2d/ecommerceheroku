@@ -135,11 +135,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIR = (
-    os.path.join(BASE_DIR, 'static')
-)
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 try:
     from .local_settings import *
