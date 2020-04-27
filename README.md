@@ -1,5 +1,5 @@
-# E-Commerce
-E-Commerce desenvolvido em Python utilizando o framework Django
+# E-Commerce Application
+E-Commerce developed in Python using Django Framework
 
 Local build instructions:
 
