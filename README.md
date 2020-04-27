@@ -1,6 +1,10 @@
 # E-Commerce Application
 E-Commerce developed in Python using Django Framework
 
+Avaliable at:
+
+* ecommercevinidev.herokuapp.com
+
 Local build instructions:
 
 * Create your virtual environment (python version 3.6.9)
