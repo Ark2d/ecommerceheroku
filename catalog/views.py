@@ -11,9 +11,6 @@ class ProductListView(generic.ListView):
     paginate_by = 3
 
 
-product_list = ProductListView.as_view()
-
-
 class CategoryListView(generic.ListView):
 
     template_name = 'catalog/category.html'
@@ -29,14 +26,14 @@ class CategoryListView(generic.ListView):
         return context
 
 
-category = CategoryListView.as_view()
-
-
 def product(request, slug):
-    product = Product.objects.get(slug=slug)
+    prod = Product.objects.get(slug=slug)
     context = {
-        'product': product
+        'product': prod
     }
     return render(request, 'catalog/product.html', context)
 
+
+product_list = ProductListView.as_view()
+category = CategoryListView.as_view()
 

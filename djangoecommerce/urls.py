@@ -15,11 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from core.views import index, contact
+from core.views import index, contact, register
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
+    # ------------------------------------------ Base Routes -----------------------------------------------------------
     url(r'^$', index, name='index'),
     url(r'^contato/$', contact, name='contact'),
     url(r'^catalogo/', include('catalog.urls', namespace='catalog')),
+    # -------------------------------------- Authentication Related ----------------------------------------------------
+    url(r'^entrar/$', login, {'template_name': 'login.html'}, name='login'),
+    url(r'^sair/$', logout, {'next_page': 'index'}, name='logout'),
+    # ------------------------------------------- Register -------------------------------------------------------------
+    url(r'^registro/$', register, name='register'),
+    # ---------------------------------------- Django Admin Routes -----------------------------------------------------
     url(r'^admin/', admin.site.urls),
 ]
