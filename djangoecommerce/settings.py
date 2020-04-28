@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # apps
     'core',
     'catalog',
+    'accounts',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -116,6 +117,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
+DATE_INPUT_FORMATS = ['%d/%m/%Y']
+
 TIME_ZONE = 'America/Manaus'
 
 USE_I18N = True
@@ -148,6 +151,8 @@ DEFAULT_FROM_EMAIL = 'admin@eccomercevinidev.com'
 # auth
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout'
+AUTH_USER_MODEL = 'accounts.User'
 
 try:
     from .local_settings import *
