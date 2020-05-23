@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import View, TemplateView, CreateView
-from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse_lazy
+from django.contrib import messages
 
+from . import config
 from .forms import ContactForm
 
 
@@ -21,6 +21,8 @@ def contact(request):
     if form.is_valid():
         form.send_mail()
         success = True
+    elif request.method == 'POST':
+        messages.error(request, config.MESSAGE_INVALID_FORM)
     context = {
         'form': form,
         'success': success

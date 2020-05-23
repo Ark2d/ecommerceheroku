@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^contato/$', contact, name='contact'),
     url(r'^catalogo/', include('catalog.urls', namespace='catalog')),
     url(r'^conta/', include('accounts.urls', namespace='accounts')),
+    url(r'^compras/', include('checkout.urls', namespace='checkout')),
     # -------------------------------------- Authentication Related ----------------------------------------------------
     url(r'^entrar/$', login, {'template_name': 'login.html'}, name='login'),
     url(r'^sair/$', logout, {'next_page': 'index'}, name='logout'),
