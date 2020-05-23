@@ -44,7 +44,7 @@ class CartItemView(TemplateView):
                 formset = cart_item_formset(queryset=CartItem.objects.none())
             else:
                 formset = cart_item_formset(
-                    queryset=CartItem.objects.filter(cartkey=session_key),
+                    queryset=CartItem.objects.filter(cart_key=session_key),
                     data=self.request.POST or None
                 )
         else:
