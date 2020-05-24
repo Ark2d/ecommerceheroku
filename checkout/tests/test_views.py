@@ -12,7 +12,7 @@ class CreateCartItemTestcase(TestCase):
     def setUp(self):
         self.product = mommy.make('catalog.Product')
         self.client = Client()
-        self.url = reverse('checkout:create_cartitem', kwargs={'slug': self.product.slug})
+        self.url = reverse('checkout:create_cart_item', kwargs={'slug': self.product.slug})
 
     def teraDown(self):
         self.product.delete()
@@ -20,7 +20,7 @@ class CreateCartItemTestcase(TestCase):
 
     def test_add_cart_item_simple(self):
         response = self.client.get(self.url)
-        redirect_url = reverse('checkout:cartitem')
+        redirect_url = reverse('checkout:cart_item')
         self.assertRedirects(response, redirect_url)
         self.assertEquals(CartItem.objects.count(), 1)
 
