@@ -8,7 +8,7 @@ class UserAdminCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'name', 'email', 'phone', 'birth_date']
+        fields = ('username', 'name', 'email', 'phone', 'birth_date')
 
 
 class UserAdminForm(forms.ModelForm):

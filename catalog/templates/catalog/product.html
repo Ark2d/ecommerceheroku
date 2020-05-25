@@ -1,26 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}
-    {{ product }} | {{ block.super }}
-{% endblock %}
+{% block title %}{{ product }} | {{ block.super }}{% endblock %}
 
 {% block container %}
-<div class="container">
-    <div class="page-header">
-        <h1>{{ product }}</h1>
-    </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <a href="#" class="thumbnail">
-                <img src="http://placehold.it/350x250" alt="" />
-            </a>
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Início</a></li>
+        <li><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></li>
+        <li class="active">{{ product }}</li>
+    </ol>
+    <div class="container">
+        <div class="page-header">
+            <h1>{{ product }}</h1>
         </div>
-        <div class="col-sm-8">
-            <p class="text-right">
-                <a href="{% url 'checkout:create_cart_item' product.slug %}" class="btn btn-success">Adicionar ao Carrinho</a>
-            </p>
-           {{ product.description|linebreaks }}
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="#" class="thumbnail">
+                    <img src="http://placehold.it/350x250" alt="" />
+                </a>
+            </div>
+            <div class="col-sm-8">
+                <p class="text-right">
+                    <a href="{% url 'checkout:create_cart_item' product.slug %}" class="btn btn-success">Adicionar ao Carrinho</a>
+                    <a href="{{ product.category.get_absolute_url }}" class="btn btn-primary">Retornar</a>
+                </p>
+               {{ product.description|linebreaks }}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

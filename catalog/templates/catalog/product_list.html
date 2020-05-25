@@ -2,20 +2,22 @@
 
 {% load pagination %}
 
-{% block title %}
-    Listagem de Produtos | {{ block.super }}
-{% endblock %}
+{% block title %}Listagem de Produtos | {{ block.super }}{% endblock %}
 
 {% block container %}
-<div class="container">
-    <div class="page-header">
-		<h1>Produtos</h1>
-	</div>
-    <div class="row">
-        {% for product in product_list %}
-            {% include "catalog/_product.html" %}
-        {% endfor %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Início</a></li>
+        <li class="active">Produtos</li>
+    </ol>
+    <div class="container">
+        <div class="page-header">
+            <h1>Produtos</h1>
+        </div>
+        <div class="row">
+            {% for product in product_list %}
+                {% include "catalog/_product.html" %}
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% pagination request paginator page_obj %}
 {% endblock %}

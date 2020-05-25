@@ -20,7 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     name = models.CharField('Nome', max_length=100, blank=True)
     email = models.EmailField('E-mail', unique=True)
-    phone = models.CharField('Telefone', max_length=13)
+    phone = models.CharField('Telefone', max_length=14)
     birth_date = models.DateField('Data de Nascimento', null=True)
     is_staff = models.BooleanField('Equipe', default=False)
     is_active = models.BooleanField('Ativo', default=True)

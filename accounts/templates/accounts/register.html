@@ -24,7 +24,13 @@
                               {{ field.label }}
                           </label>
                           <div class="col-md-9">
-                              {% render_field field class="form-control" %}
+                              {% if field.html_name == 'phone' %}
+                                  {% render_field field class="form-control phone-mask" placeholder="Ex: (00) 0000-0000"%}
+                              {% elif field.html_name == 'birth_date'%}
+                                  {% render_field field class="form-control date-mask" placeholder="Ex: 00/00/0000"%}
+                              {% else %}
+                                    {% render_field field class="form-control" %}
+                              {% endif %}
                               {% for error in field.errors %}
                                   <span class="help-block">{{ error }}</span>
                               {% endfor %}
@@ -33,7 +39,7 @@
                   {% endfor %}
                    <div class="form-group">
                         <div class="col-md-9 col-md-offset-3">
-                            <button type="submit" class="btn btn-primary">Registrar</button>
+                            <button type="submit" class="btn btn-success"> Registrar</button>
                         </div>
                    </div>
               </fieldset>
