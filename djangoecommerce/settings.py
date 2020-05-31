@@ -177,7 +177,7 @@ PAYPAL_EMAIL = 'sb-tzuyg1885923@business.example.com'
 PAYPAL_TEST = True
 
 PAGSEGURO_TOKEN = '9C5010BE5A3C4147971DE93FE78FD381'
-PAGSEGURO_EMAIL = 'v.almeida_hotmail.com'
+PAGSEGURO_EMAIL = 'v.almeida_@hotmail.com'
 PAGSEGURO_SANDBOX = True
 
 try:

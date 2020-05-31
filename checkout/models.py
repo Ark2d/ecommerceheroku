@@ -144,7 +144,7 @@ class Order(models.Model):
             'currency_code': 'BRL',
             'charset': 'utf-8',
         }
-        index = 1,
+        index = 1
         for item in self.items.all():
             paypal_dict['amount_{}'.format(index)] = '%.2d' % item.price
             paypal_dict['item_name_{}'.format(index)] = item.product.name

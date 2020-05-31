@@ -102,7 +102,7 @@ class OrderListView(LoginRequiredMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
+        return Order.objects.filter(user=self.request.user).order_by('-pk')
 
 
 class OrderDetailView(LoginRequiredMixin, DetailView):
@@ -121,8 +121,8 @@ class PagSeguroView(LoginRequiredMixin, RedirectView):
             Order.objects.filter(user=self.request.user), pk=order_pk
         )
         pg = order.pagseguro()
-        pg.redirect_url - self.request.build_absolute_uri(
-            reverse('checkout:order_detail', args=[order_detail.pk])
+        pg.redirect_url = self.request.build_absolute_uri(
+            reverse('checkout:order_detail', args=[order.pk])
         )
         pg.notification_url = self.request.build_absolute_uri(
             reverse('checkout:pagseguro_notification')
@@ -161,7 +161,7 @@ def pagseguro_notification(request):
     if notification_code:
         pg = PagSeguro(
             email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
-            config={'sandbos': settings.PAGSEGURO_SANDBOX}
+            config={'sandbox': settings.PAGSEGURO_SANDBOX}
         )
         notification_data = pg.check_notification(notification_code)
         status = notification_data.status
